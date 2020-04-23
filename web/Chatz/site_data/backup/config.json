@@ -1,0 +1,19 @@
+
+{
+	"webServer_details": {
+		"domain_info": ["chatz3.ml", "freenom.com", "najeemb18@gmail.com"],
+		"host_info": ["NS1.BYET.ORG, NS2.BYET.ORG", "profreehost.com", "najeemb18@yahoo.com", "123456Web"]
+	},
+	"database_details": {
+		"host_name": "sql113.unaux.com",
+		"username": "unaux_24420484",
+		"password": "xu974g66wu0r",
+		"database_name": "unaux_24420484_main"
+	},
+	"api_details": {
+		"API1": ["http://api.ipstack.com/IPAddr", "cd3a34ad6638eee3bf952f21242761e8", "najeemb18@gmail.com", "123456Ipstack"],
+		"API2": ["https://api-maps.yandex.ru/2.1/?apikey=91a1d689-f537-4d34-b2b2-1a62ad15e70e&lang=en_US", "91a1d689-f537-4d34-b2b2-1a62ad15e70e", "najeemb18@gmail.com"],
+		"API3": ["https://www.feedgrabbr.com/widget/fgwidget.js", "fgid_60ada8369694192f75c948834", "najeemb18@gmail.com"]
+	},
+    "copyrightc":"@copyRights all rights reserved NajeemB"
+}

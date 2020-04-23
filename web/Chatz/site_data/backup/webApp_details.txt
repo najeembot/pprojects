@@ -1,0 +1,17 @@
+url:chatz3.ml
+cpanel username, mysql username, ftp username, vpanel : unaux_24420484
+cpanel password, mysql password, ftp password, vpanel : xu974g66wu0r
+sql hostname : sql113.unaux.com
+ftp hostname : ftp.unaux.com
+database name : unaux_24420484_main	
+emails attached to account :
+najeemb18@gmail.com, najeemb18@yahoo.com
+domain by : freenom.com
+
+------------------------------------------------RSS FEED----------------------------------------------------------------------------
+
+<div class="feedgrabbr_widget" id="fgid_60ada8369694192f75c948834"></div>
+<script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_60ada8369694192f75c948834");</script>
+<script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+
+------------------------------------------------

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.chatz3.ml/sitemap.xml

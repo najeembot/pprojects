@@ -1,0 +1,283 @@
+<?php
+@ob_start();
+@session_start();
+@require_once "../connect_db.php";
+if (@isset($_COOKIE['sitename']) && @isset($_COOKIE['username'])) {
+?>
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="msvalidate.01" content="A2175D7DBFD9B1668012448807EFABC8" />
+    <meta name="google-site-verification" content="Ot7digfb6ZQJppEQGIqDM2Gt2Dld4149wcyI26ZOdD8" />
+    <meta name="yandex-verification" content="9b3d2af6e3081d2d" />
+    <title>Chatz - Home</title>
+    <link rel="icon" type="image/x-icon" href="../img/site_icon.ico" />
+    <link rel="stylesheet" href="../css/foundation.css?ec=1" />
+    <link rel="stylesheet" href="../css/style.css?ec=1" />
+    <script src="../js/vendor/modernizr.js"></script>
+  </head>
+<body id="home_page" onload="get_latest_message(); onlineOffline(); requestDnP();">
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/script.js?ec=1"></script>
+    <noscript>
+          Sorry your browser doesn't support javascript or your browser scripting might be disabled
+    </noscript>
+    <div class="contain-to-grid sticky">
+    <?php 
+          try {
+            $up_query = "SELECT * FROM `users` WHERE `username` = '".$_COOKIE['username']."'";
+            if ($up_query_run = @mysqli_query($connection->con_link, $up_query)) {
+                while ($up_query_row = @mysqli_fetch_assoc($up_query_run)) {
+                      $upUsername = $up_query_row['username'];
+                      $upPicture = $up_query_row['p_link'];
+                      $upFname = $up_query_row['full_name'];
+                      $upEmail = $up_query_row['email'];
+                      $upPhone = $up_query_row['phone'];
+                      $upSex = $up_query_row['sex'];
+                      $upPassword = $up_query_row['password'];
+                      $upTempPass = @strrev($up_query_row['temp_password']);
+      ?>
+    <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on:[medium,large]">
+  <ul class="title-area">
+    <li class="name">
+      <h1 id="site_logo_name"><a href="./">Chatz</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar"><a href="#" class="fl menu-icon"><img id="user_profile_picture" src="<?php echo $upPicture.'?id='.strrev(rand(0,100).str_shuffle('abcdefghijklmnopqrstufwxyz')); ?>" alt="<?php echo $upPicture; ?>" title="<?php echo $upFname; ?>" /></a></li>
+  </ul>
+  <!-- nav section for small devices -->
+  <section class="top-bar-section hide-for-medium hide-for-large">
+    <ul class="left">
+      <li><a href="#"><b style="color:#669acb; font-size:18px;"><?php echo $upFname; ?></b></a></li>
+      <li><a href="#" data-reveal-id="profileSettingsModule">Settings</a></li>
+      <li><a href="../logout.php?logout=user">Log out&nbsp;<img src="../img/logout.png" alt="Log out" onclick="window.location = '../logout.php';" /></a></li>
+    </ul>
+  </section>
+  <!-- nav section for medium and large devices -->
+  <section class="top-bar-section hide-for-small">
+    <ul class="left">
+      <li><a href="#" class="fl menu-icon" data-dropdown="hnavd" aria-controls="hnavd" aria-expanded="false"><img id="user_profile_picture" src="<?php echo $upPicture.'?id='.strrev(rand(0,100).str_shuffle('abcdefghijklmnopqrstufwxyz')); ?>" id="<?php echo strrev(rand(0, 100).str_shuffle('abcdefghijklmnopqrstufwxyz'));?>" alt="<?php echo $upPicture; ?>" title="<?php echo $upFname; ?>" /></a></li>
+    </ul>
+    <ul id="hnavd" class="f-dropdown" data-dropdown-content aria-hidden="false" tabindex="-1">
+      <li><a href="#"><b style="color:#669acb; font-size:18px;"><?php echo $connection->shortenFn($upFname); ?></b></a></li><br />
+      <li><a href="#" data-reveal-id="profileSettingsModule">Settings</a></li><br />
+      <li><a href="../logout.php?logout=user">Log out&nbsp;<img src="../img/logout.png" alt="Log out" onclick="window.location = '../logout.php';" /></a></li>
+    </ul>
+  </section>
+</nav>
+<?php
+                }
+            } else {
+                  throw new Exception("<h6 class='' style='color:#f00;'>Error occured while retrieving user profile data</h6>");
+            }
+          } catch(Exception $ex) {
+              echo $ex->getMessage();
+          }
+      ?>
+</div>
+        <div id="profileSettingsModule" class="reveal-modal medium" data-reveal data-options="close_on_background_click:false;close_on_esc:false;" aria-labelledby="profileSettingsModuleTitle" aria-hidden="true" role="dialog">
+  <h2 id="profileSettingsModuleTitle"><b>Profile Settings</b></h2>
+  <br />
+                      <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" name="edit_form" id="edit_form" enctype="application/form-data" onsubmit="return AjaxSubmit();">
+                       <label>Full Name:&nbsp;</label>
+                       <input type="text" name="edit_name" id="edit_name" placeholder="New name" value="<?php echo $upFname; ?>" /><br />
+                       <label>Username:&nbsp;</label>
+                       <input type="text" name="edit_username" id="edit_username" placeholder="New username"  value="<?php echo $upUsername; ?>" /><br />
+                       <label>Password:&nbsp;</label>
+                       <div class="row collapse">
+                        <div class="small-9 large-10 columns">
+                           <input type="password" name="edit_password" id="edit_password" placeholder="New password"  value="<?php echo @substr($upTempPass, 1, strlen($upTempPass) - 2); ?>" />
+                        </div>
+                        <div class="small-3 large-2 columns">
+                           <span class="postfix">Hide:&nbsp;<input type="checkbox" name="hide_edit_pass" id="hide_edit_pass" checked onClick="javascript:togglePassShow(this);" /></span>
+                        </div>
+                       </div>
+                       <br />
+                       <label>Email:&nbsp;</label>
+                       <input type="text" name="edit_email" id="edit_email" placeholder="New email" value="<?php echo $upEmail; ?>" /><br />
+                       <label>Phone:&nbsp;</label>
+                       <input type="text" name="edit_phone" id="edit_phone" placeholder="New phone" value="<?php echo $upPhone; ?>" /><br />
+                       <label>Sex:&nbsp;</label>
+                       <select id="edit_sex" name="edit_sex">
+                         <?php 
+                          $options = array("Male", "Female", "Other");
+                          foreach ($options as $option) {
+                            if (@strcasecmp($upSex, strtolower($option)) == 0) {
+                         ?>
+                         <option value="<?php echo strtolower($option); ?>" selected><?php echo $option; ?></option>
+                         <?php
+                            } else {
+                         ?>
+                         <option value="<?php echo strtolower($option); ?>"><?php echo $option; ?></option>
+                         <?php
+                            } 
+                          }
+                         ?>
+                       </select><br />
+                       <label>Profile picture:&nbsp;</label>
+                       <div class="row collapse">
+                        <div class="medium-6 columns">
+                         <input type="file" name="edit_pp" id="edit_pp" onchange="onChangePP()" />
+                        </div>
+                        <div class="medium-6 columns" id="edit_fileV">
+                         <a class="th [radius]">
+                          <img src="<?php echo $upPicture; ?>?id=<?php echo strrev(rand(0, 100).str_shuffle('abcdefghijklmnopqrstufwxyz'));?>" id="edit_img" />
+                         </a>
+                         <p class="text-center">
+                           <a onclick="cancel_edit_img();" class="text-center">Cancel</a>&nbsp;
+                              |
+                           &nbsp;<a onclick="default_edit_img();" class="text-center">Default</a>
+                         </p>
+                        </div>
+                       </div>
+                       <br />
+                       <input type="hidden" id="default_name" name="default_name" value="<?php echo $upFname; ?>" />
+                       <input type="hidden" id="default_username" name="default_username" value="<?php echo $upUsername; ?>" />
+                       <input type="hidden" id="default_password" name="default_password" value="<?php echo @substr($upTempPass, 1, strlen($upTempPass) - 2); ?>" />
+                       <input type="hidden" id="default_email" name="default_email" value="<?php echo $upEmail; ?>" />
+                       <input type="hidden" id="default_phone" name="default_phone" value="<?php echo $upPhone; ?>" />
+                       <input type="hidden" id="default_sex" name="default_sex" value="<?php echo $upSex; ?>" />
+                       <input type="hidden" id="current_picture" name="old_picture" value="<?php echo $upPicture; ?>" />
+                       <input type="hidden" id="if_default_picture" name="if_default_picture" value="" />
+                       <input type="submit" value="Save" id="edit_submit_b" class="button expand radius" />
+                     </form>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<div id="loadModule" class="reveal-modal small" data-reveal data-options="close_on_background_click:false;close_on_esc:false;" aria-labelledby="loadModuleTitle" aria-hidden="true" role="dialog">
+  <h2 id="loadModuleTitle">Updating...</h2>
+  <center><img src='../img/preloader1.gif' alt='' id='edit_preloader' /></center>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<div id="resultModule" class="reveal-modal medium" data-reveal data-options="close_on_background_click:false;close_on_esc:false;" aria-labelledby="resultModule" aria-hidden="true" role="dialog">
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+<div>
+</div>
+<br />
+<div class="row collapse">
+<div class="large-3 columns" id="left_sidebar">
+<br />
+<input type="text" name="user_search_query" id="user_search_query" placeholder="Search users by name" class="text-center radius" />
+<br />
+<div id="users">
+<?php @include_once "../users.php"; ?>
+</div>
+</div>
+<div class="large-3 columns" id="news_feed">
+<div class="feedgrabbr_widget" id="fgid_60ada8369694192f75c948834"></div>
+<script>if (typeof (fg_widgets) === "undefined") fg_widgets = new Array(); fg_widgets.push("fgid_60ada8369694192f75c948834");</script>
+<script async src="https://www.feedgrabbr.com/widget/fgwidget.js"></script>
+</div>
+<div class="large-5 columns" id="chat_panel">
+ <div id="chat_header">
+  <?php
+    try {
+      if (@isset($_SESSION['chat_user']) and !@empty($_SESSION['chat_user']) and $_SESSION['chat_user'] != "group_chat") {
+       $ud_query = "SELECT `full_name`, `status`, `userl_ip` FROM `users` WHERE `username` = '".@$_SESSION['chat_user']."'";
+       $udCoords = array();
+       if ($ud_query_run = @mysqli_query($connection->con_link, $ud_query)) {
+           $ud_query_row = @mysqli_fetch_assoc($ud_query_run);
+           $udFullName = $ud_query_row['full_name'];
+           $online = ($ud_query_row['status'] == "online") ? true : false;
+           $user_ip = $ud_query_row['userl_ip'];
+       } else {
+           throw new Exception("Error occured while retrieving chat user details.");
+       }
+      }
+    } catch(Exception $ex) {
+       echo "<p style='color:red; font-size:1em;'>".$ex->getMessage()."</p>";
+    }
+  ?>
+  <div class="row">
+  <div class="small-5 columns">
+  <p id="chat_target_name">
+  <?php
+      if (@isset($_SESSION['chat_user']) and !@empty($_SESSION['chat_user'])) {
+          if (!@empty($udFullName)) {
+              echo $udFullName;
+          } else {
+              echo "Group Chat";
+          }
+      } else {
+         echo "No user selected";
+      }
+  ?>
+  </p>
+  </div>
+  <?php
+     if (@isset($_SESSION['chat_user'])) {
+      if (@$_SESSION['chat_user'] == "group_chat") {
+  ?>
+  <div class="small-2 columns">
+  <img src="../img/gc.png" alt="../img/gc.png" title="Group chat" id="group_chat_sicon" />
+  </div>
+  <?php
+      } elseif (@$online) {
+  ?>
+  <div class="small-2 small-pull-1 columns">
+  <img src="../img/online.png" alt="../img/online.png" title="Online" id="online_state_icon" />
+  </div>
+  <div class="small-3 columns">
+  <a href="../locate.php?user_ip=<?php echo $user_ip; ?>&user_fname=<?php echo @mysqli_fetch_assoc(mysqli_query($connection->con_link, "SELECT `full_name` FROM `users` WHERE `username` = '".$_SESSION['chat_user']."'"))['full_name']; ?>" class="tiny button radius on" id="cul_button">Locate</a>
+  </div>
+  <?php
+      } elseif (!@$online) {
+  ?>
+  <div class="small-2 small-pull-1 columns">
+  <img src="../img/offline.png" alt="../img/offline.png" title="Offline" id="offline_state_icon" />
+  </div>
+  <div class="small-3 columns">
+  <a href="../locate.php?user_ip=<?php echo $user_ip; ?>&user_fname=<?php echo @mysqli_fetch_assoc(mysqli_query($connection->con_link, "SELECT `full_name` FROM `users` WHERE `username` = '".$_SESSION['chat_user']."'"))['full_name']; ?>" class="tiny button radius off" id="cul_button">Locate</a>
+  </div>
+  <?php
+      }
+     }
+  ?>
+  </div>
+ </div>
+
+ <div id="main_communication_holder">
+    <?php
+      @include_once "../get_messages.php";
+    ?>
+ </div>
+ <div id="sending_tab">
+ <div id="message_bar">
+ <img src="../img/prl1.gif" id="attach_prl" alt="loading..." /></div>
+ <div id="text_area" contenteditable="true" onKeyDown="javascript:check_send(event);" spellcheck="true" class="hide-for-medium hide-for-small"></div>
+ <form action="<?php $_SERVER['PHP_SELF']; ?>" method="POST" class="hide-for-large" onSubmit="javascript:return check_send(event);">
+ <div class="row">
+    <div class="large-12 columns">
+      <div class="row collapse">
+        <div class="small-10 columns">
+          <input type="text" name="message" id="message" placeholder="Enter message here">
+        </div>
+        <div class="small-2 columns">
+          <input type="submit" class="button postfix" value="Send" />
+        </div>
+      </div>
+    </div>
+  </div>
+ </form>
+ <div id="text_area_bar" class="row">
+ <div class="small-2 columns"><label for="attach"><img src="../img/attach.png" alt="../img/attach.png" title="Send a file" id="attach_icon" /><input type="file" name="attach" id="attach" onChange="javascript:check_attach(event);" /></label></div><div class="small-8 columns"><p class="text-center" id="site_info" class="text-left text-bold">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered by <a href="http://www.najeemb18.ml?ri=<?php echo rand(0, 999); ?>" target="_blank">NajeemB</a></p></div>               
+ </div> 
+</div>
+</div>
+</div>
+    <span id="tsc"></span>
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/foundation.min.js"></script>
+    <script src="../js/foundation.dropdown.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+  <!-- @copyRights NajeemB all rights reserved -->
+</html>
+<?php 
+} else {
+    @header("location: ../");
+}
