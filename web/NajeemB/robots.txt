@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: http://www.najeemb18.ml/sitemap.xml
