@@ -1,0 +1,6 @@
+/* custom style for the java chatzone */
+#messages_container
+{
+    height: 400px;
+    overflow:scroll;
+}
