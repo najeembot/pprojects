@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/mainView"
+    android:background="#FFFFFF">
+
+
+    <EditText
+        android:id="@+id/urlEt"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:inputType="textUri"
+        android:hint="Paste your video url here"
+        android:textColor="#000000"
+        android:textColorHighlight="#FFFF00"
+        android:textStyle="italic"
+        android:layout_marginTop="65dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp" />
+    <ImageButton
+        android:id="@+id/gbutton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:background="#FF0000"
+        android:src="@drawable/play_icon"
+        android:contentDescription="Click here to play the video"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:cursorVisible="true"/>
+    <TextView
+        android:id="@+id/rtextView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:text="Or" />
+    <Button
+        android:id="@+id/fbutton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:contentDescription="Click here to choose a file from the storage"
+        android:text="Choose file"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:cursorVisible="true"/>
+
+</LinearLayout>
