@@ -1,0 +1,187 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.app.yoplayer"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="14"
+8-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:4:5-66
+11-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:4:22-64
+12    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+12-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:5:5-80
+12-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:5:22-77
+13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:6:5-81
+13-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:6:22-78
+14
+15    <application
+15-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:7:5-67:19
+16        android:allowBackup="true"
+16-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:8:9-35
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.1.0] /home/wappier/.gradle/caches/transforms-2/files-2.1/e9dab9c67c1ee3668e0bbf86c6d8cbd8/core-1.1.0/AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:9:9-43
+20        android:label="@string/app_name"
+20-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:10:9-41
+21        android:roundIcon="@mipmap/ic_launcher"
+21-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:11:9-48
+22        android:supportsRtl="true"
+22-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:12:9-35
+23        android:testOnly="true"
+24        android:theme="@style/AppTheme" >
+24-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:13:9-40
+25        <activity android:name="com.app.yoplayer.MainActivity" >
+25-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:14:9-20:20
+25-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:14:19-47
+26            <intent-filter>
+26-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:15:13-19:29
+27                <action android:name="android.intent.action.MAIN" />
+27-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:16:17-69
+27-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:16:25-66
+28
+29                <category android:name="android.intent.category.LAUNCHER" />
+29-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:18:17-77
+29-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:18:27-74
+30            </intent-filter>
+31        </activity>
+32        <activity android:name="com.app.yoplayer.VideoPlayer" >
+32-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:21:9-66:20
+32-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:21:19-46
+33            <intent-filter>
+33-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:22:13-33:29
+34                <action android:name="android.intent.action.VIEW" />
+34-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:23:17-69
+34-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:23:25-66
+35
+36                <category android:name="android.intent.category.DEFAULT" />
+36-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:17-76
+36-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:27-73
+37                <category android:name="android.intent.category.BROWSABLE" />
+37-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:17-78
+37-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:27-75
+38
+39                <data android:scheme="http" />
+39-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+39-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+40                <data android:scheme="https" />
+40-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+40-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+41                <data android:scheme="content" />
+41-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+41-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+42                <data android:scheme="file" />
+42-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+42-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+43                <data android:mimeType="video/*" />
+43-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+43-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+44                <data android:mimeType="audio/*" />
+44-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+44-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+45                <data android:mimeType="application/sdp" />
+45-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+45-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+46            </intent-filter>
+47            <intent-filter>
+47-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:34:13-45:29
+48                <action android:name="android.intent.action.SEND" />
+48-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:35:17-69
+48-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:35:25-66
+49
+50                <category android:name="android.intent.category.DEFAULT" />
+50-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:17-76
+50-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:27-73
+51                <category android:name="android.intent.category.BROWSABLE" />
+51-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:17-78
+51-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:27-75
+52
+53                <data android:scheme="http" />
+53-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+53-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+54                <data android:scheme="https" />
+54-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+54-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+55                <data android:scheme="content" />
+55-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+55-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+56                <data android:scheme="file" />
+56-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+56-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+57                <data android:mimeType="video/*" />
+57-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+57-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+58                <data android:mimeType="audio/*" />
+58-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+58-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+59                <data android:mimeType="application/sdp" />
+59-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+59-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+60            </intent-filter>
+61            <intent-filter>
+61-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:46:13-57:29
+62                <action android:name="android.intent.action.SEND_MULTIPLE" />
+62-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:47:17-78
+62-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:47:25-75
+63
+64                <category android:name="android.intent.category.DEFAULT" />
+64-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:17-76
+64-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:27-73
+65                <category android:name="android.intent.category.BROWSABLE" />
+65-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:17-78
+65-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:27-75
+66
+67                <data android:scheme="http" />
+67-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+67-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+68                <data android:scheme="https" />
+68-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+68-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+69                <data android:scheme="content" />
+69-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+69-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+70                <data android:scheme="file" />
+70-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+70-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+71                <data android:mimeType="video/*" />
+71-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+71-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+72                <data android:mimeType="audio/*" />
+72-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+72-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+73                <data android:mimeType="application/sdp" />
+73-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+73-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+74            </intent-filter>
+75            <intent-filter>
+75-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:58:13-65:29
+76                !-- HTTP live support -->
+77                <action android:name="android.intent.action.VIEW" />
+77-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:23:17-69
+77-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:23:25-66
+78
+79                <category android:name="android.intent.category.DEFAULT" />
+79-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:17-76
+79-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:24:27-73
+80                <category android:name="android.intent.category.BROWSABLE" />
+80-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:17-78
+80-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:25:27-75
+81
+82                <data android:scheme="http" />
+82-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+82-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:23-44
+83                <data android:mimeType="audio/*" />
+83-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:26:17-47
+83-->/home/wappier/AndroidStudioProjects/YoPlayer/app/src/main/AndroidManifest.xml:30:23-49
+84            </intent-filter>
+85        </activity>
+86    </application>
+87
+88</manifest>
